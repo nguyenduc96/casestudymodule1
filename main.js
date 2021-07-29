@@ -6,12 +6,10 @@ function clearCanvas() {
     context.clearRect(0,0, canvas.clientWidth, canvas.clientHeight)
 }
 
-bird.drawBird(context);
-// obstacletop.drawObstacle(context);
-// obstaclebot.drawObstacle(context);
 
-// window.requestAnimationFrame(moveObstacle)
-// window.requestAnimationFrame()
-setInterval(moveObstacle, 50)
-setInterval(moveBird, 50)
+// requestAnimationFrame(moveObstacle)
+// requestAnimationFrame(moveBird)
+
+let interval1Id = setInterval(moveObstacle, 0)
+let interval2Id = setInterval(moveBird, 30)
 
