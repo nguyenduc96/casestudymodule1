@@ -13,8 +13,9 @@ class Bird {
     }
 
     drawBird() {
-        context.fillRect(this.x, this.y, this.weight, this.height);
-        context.fillStyle = 'red';
+        // context.fillRect(this.x, this.y, this.weight, this.height);
+        // context.drawImage(bird, 160, 140, 30, 30);
+        // context.fillStyle = 'red';
     }
 
     checkBird() {
@@ -27,7 +28,6 @@ class Bird {
     moveUp() {
         this.y -= 50
         this.gravity = 0.5;
-        console.log('bird bay len' + this.y);
     }
 
     clickUp() {
@@ -57,8 +57,8 @@ function moveBird() {
        clearInterval(interval2Id);
 
    }
-    bird.moveDown();
-    bird.drawBird();
+    // bird.moveDown();
+    // bird.drawBird();
     drawMultiObstacle();
 }
 
@@ -72,7 +72,12 @@ function moveBirdUp() {
         }
     }
 }
-let bird = new Bird(160, 140, 30, 30);
+// let bird = new Bird(160, 140, 30, 30);
+let bird = new Image();
+bird.src = 'images/pink.jpeg';
+bird.onload = function (){
+    context.drawImage(bird, 160, 140, 30, 30);
+}
 
 function checkCollisionTop() {
     if ((((bird.x + bird.weight <= (obstacletop.x + obstacletop.weight)) && ((bird.x + bird.weight) >= (obstacletop.x))) &&
@@ -116,4 +121,4 @@ function checkGameOver() {
 }
 
 window.addEventListener('keydown', moveBirdUp);
-bird.clickUp();
+// bird.clickUp();

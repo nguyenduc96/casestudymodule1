@@ -66,7 +66,7 @@ function moveObstacle() {
     obstaclebot1.moveLeft1();
     obstacletop2.moveLeft2();
     obstaclebot2.moveLeft2();
-    bird.drawBird();
+    // bird.drawBird();
     drawMultiObstacle();
     plusPoint();
 }
