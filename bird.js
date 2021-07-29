@@ -13,9 +13,7 @@ class Bird {
     }
 
     drawBird() {
-        // context.fillRect(this.x, this.y, this.weight, this.height);
-        // context.drawImage(bird, 160, 140, 30, 30);
-        // context.fillStyle = 'red';
+        context.drawImage(birdImg, this.x, this.y, this.weight, this.height);
     }
 
     checkBird() {
@@ -57,8 +55,8 @@ function moveBird() {
        clearInterval(interval2Id);
 
    }
-    // bird.moveDown();
-    // bird.drawBird();
+    bird.moveDown();
+    bird.drawBird();
     drawMultiObstacle();
 }
 
@@ -72,12 +70,9 @@ function moveBirdUp() {
         }
     }
 }
-// let bird = new Bird(160, 140, 30, 30);
-let bird = new Image();
-bird.src = 'images/pink.jpeg';
-bird.onload = function (){
-    context.drawImage(bird, 160, 140, 30, 30);
-}
+let bird = new Bird(160, 140, 30, 25);
+let birdImg = new Image();
+birdImg.src = 'images/nobgr.png';
 
 function checkCollisionTop() {
     if ((((bird.x + bird.weight <= (obstacletop.x + obstacletop.weight)) && ((bird.x + bird.weight) >= (obstacletop.x))) &&
@@ -94,31 +89,24 @@ function checkCollisionTop() {
 
 function checkCollisionBot() {
     if ((((bird.x + bird.weight <= (obstacletop.x + obstacletop.weight)) && ((bird.x + bird.weight) >= (obstaclebot.x))) &&
-        ((bird.y + bird.height >= (obstaclebot.y)) && ((bird.y + bird.height) <= (obstaclebot.y + obstaclebot.height)))) ||
+        ((bird.y + bird.height >= (obstaclebot.y)))) ||
         (((bird.x + bird.weight <= (obstacletop1.x + obstacletop1.weight)) && ((bird.x + bird.weight) >= (obstaclebot1.x))) &&
-        ((bird.y + bird.height >= (obstaclebot1.y)) && ((bird.y + bird.height) <= (obstaclebot1.y + obstaclebot1.height)))) ||
+        ((bird.y + bird.height >= (obstaclebot1.y)))) ||
         (((bird.x + bird.weight <= (obstacletop2.x + obstacletop2.weight)) && ((bird.x + bird.weight) >= (obstaclebot2.x))) &&
-        ((bird.y + bird.height >= (obstaclebot2.y)) && ((bird.y + bird.height) <= (obstaclebot2.y + obstaclebot2.height))))
-    ){
+        ((bird.y + bird.height >= (obstaclebot2.y))))){
         return true;
     }
     return false
 }
 
 function checkCollisionStreet() {
-    if (((bird.x + bird.weight >= street.x) && (bird.x + bird.weight <= street.weight + street.x)) &&
-        ((bird.y + bird.height >= street.y) && (bird.y + bird.height) <= street.height + street.y)){
+    if (((bird.x + bird.weight >= 0) && (bird.x + bird.weight <= 600)) &&
+        ((bird.y + bird.height >= 320) && (bird.y + bird.height) <= 400)){
         return true;
     }
     return false;
 }
 
-function checkGameOver() {
-    if (checkCollisionBot() || checkCollisionTop() || checkCollisionStreet()){
-        return true;
-    }
-    return  false;
-}
 
 window.addEventListener('keydown', moveBirdUp);
-// bird.clickUp();
+bird.clickUp();

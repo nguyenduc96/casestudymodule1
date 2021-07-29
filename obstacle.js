@@ -49,7 +49,6 @@ let space = 100;
 let obsheight = Math.round(20 + Math.random() * 100);
 let obsheight1 = Math.round(20 + Math.random() * 100);
 let obsheight2 = Math.round(20 + Math.random() * 100);
-let street = new Obstacle(0, 320, 600, 80);
 let obstacletop = new Obstacle(800, 0, 30, obsheight);
 let obstacletop1 = new Obstacle(1000, 0, 30, obsheight1);
 let obstacletop2 = new Obstacle(1200, 0, 30, obsheight2);
@@ -58,18 +57,6 @@ let obstaclebot1 = new Obstacle(1000, obstacletop1.height + space, 30, 500 - (ob
 let obstaclebot2 = new Obstacle(1200, obstacletop2.height + space, 30, 500 - (obstacletop2.height + space));
 
 
-function moveObstacle() {
-    clearCanvas()
-    obstacletop.moveLeft();
-    obstaclebot.moveLeft();
-    obstacletop1.moveLeft1();
-    obstaclebot1.moveLeft1();
-    obstacletop2.moveLeft2();
-    obstaclebot2.moveLeft2();
-    // bird.drawBird();
-    drawMultiObstacle();
-    plusPoint();
-}
 
 function plusPoint() {
     if ((obstaclebot.x + obstaclebot.weight) < bird.x && (obstaclebot.x + obstaclebot.weight) > (bird.x - 1) ||
@@ -88,7 +75,6 @@ function drawMultiObstacle() {
     obstacletop1.drawObstacle();
     obstaclebot2.drawObstacle();
     obstacletop2.drawObstacle();
-    street.drawObstacle();
 }
 
 
