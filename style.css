@@ -1,4 +1,10 @@
 canvas {
-    background-image: url("images/backgrcity.png");
+    background-image: url("images/flappy-bird.gif");
     background-size: cover ;
+}
+body {
+    text-align: center;
+    /*background-image: url("images/images.jpeg");*/
+    background-size: cover;
+    background-color: pink;
 }
