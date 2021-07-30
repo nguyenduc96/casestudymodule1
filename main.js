@@ -10,15 +10,43 @@ function clearCanvas() {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 }
 
+// function Start () {
+//     bird.isStart = true;
+// }
+
+function moveBird() {
+    clearCanvas()
+    if (checkGameOver() === true) {
+        audioCollision.play();
+        alert('Game over');
+        clearInterval(interval1Id);
+        clearInterval(interval2Id);
+    }
+    bird.moveDown();
+    bird.drawBird();
+    drawMultiObstacle();
+}
+
+function moveBirdUp() {
+    switch (event.keyCode) {
+        case 32: {
+            if (!this.checkBird) {
+                audioFly.play()
+                bird.moveUp();
+                break;
+            }
+        }
+    }
+}
 
 function moveObstacle() {
     clearCanvas()
-    obstacletop.moveLeft();
-    obstaclebot.moveLeft();
-    obstacletop1.moveLeft1();
-    obstaclebot1.moveLeft1();
-    obstacletop2.moveLeft2();
-    obstaclebot2.moveLeft2();
+    obstacleTop.moveLeft();
+    obstacleBot.moveLeft();
+    obstacleTop1.moveLeft1();
+    obstacleBot1.moveLeft1();
+    obstacleTop2.moveLeft2();
+    obstacleBot2.moveLeft2();
     bird.drawBird();
     drawMultiObstacle();
     plusPoint();
@@ -30,18 +58,6 @@ function checkGameOver() {
     }
     return false;
 }
-
-function gamePlay() {
-    if (checkGameOver() === false){
-        clearCanvas();
-        bird.moveDown();
-        bird.drawBird();
-        drawMultiObstacle();
-        moveObstacle();
-        plusPoint();
-    }
-}
-
 
 let interval1Id = setInterval(moveObstacle, 0)
 let interval2Id = setInterval(moveBird, 30)

@@ -21,8 +21,8 @@ class Obstacle {
             this.x -= 0.5;
         } else {
             this.x = 600;
-            obstacletop.height = Math.round(20 + Math.random() * 150);
-            obstaclebot.y = obstacletop.height + space;
+            obstacleTop.height = Math.round(20 + Math.random() * 150);
+            obstacleBot.y = obstacleTop.height + space;
         }
     }
 
@@ -31,8 +31,8 @@ class Obstacle {
             this.x -= 0.5;
         } else {
             this.x = 600;
-            obstacletop1.height = Math.round(20 + Math.random() * 150);
-            obstaclebot1.y = obstacletop1.height + space;
+            obstacleTop1.height = Math.round(20 + Math.random() * 150);
+            obstacleBot1.y = obstacleTop1.height + space;
         }
     }
 
@@ -41,29 +41,38 @@ class Obstacle {
             this.x -= 0.5;
         } else {
             this.x = 600;
-            obstacletop2.height = Math.round(20 + Math.random() * 150);
-            obstaclebot2.y = obstacletop2.height + space;
+            obstacleTop2.height = Math.round(20 + Math.random() * 150);
+            obstacleBot2.y = obstacleTop2.height + space;
         }
     }
 }
 
 let space = 100;
-let obsheight = Math.round(20 + Math.random() * 100);
-let obsheight1 = Math.round(20 + Math.random() * 100);
-let obsheight2 = Math.round(20 + Math.random() * 100);
-let obstacletop = new Obstacle(600, 0, 30, obsheight);
-let obstacletop1 = new Obstacle(800, 0, 30, obsheight1);
-let obstacletop2 = new Obstacle(1000, 0, 30, obsheight2);
-let obstaclebot = new Obstacle(600, obstacletop.height + space, 30, 400 - (obstacletop.height + space));
-let obstaclebot1 = new Obstacle(800, obstacletop1.height + space, 30, 400 - (obstacletop1.height + space));
-let obstaclebot2 = new Obstacle(1000, obstacletop2.height + space, 30, 400 - (obstacletop2.height + space));
+let obsHeight = Math.round(20 + Math.random() * 100);
+let obsHeight1 = Math.round(20 + Math.random() * 100);
+let obsHeight2 = Math.round(20 + Math.random() * 100);
+let obstacleTop = new Obstacle(600, 0, 30, obsHeight);
+let obstacleTop1 = new Obstacle(800, 0, 30, obsHeight1);
+let obstacleTop2 = new Obstacle(1000, 0, 30, obsHeight2);
+let obstacleBot = new Obstacle(600, obstacleTop.height + space, 30, 400 - (obstacleTop.height + space));
+let obstacleBot1 = new Obstacle(800, obstacleTop1.height + space, 30, 400 - (obstacleTop1.height + space));
+let obstacleBot2 = new Obstacle(1000, obstacleTop2.height + space, 30, 400 - (obstacleTop2.height + space));
 let highScore = [0];
 let max = highScore[0];
 
+function drawMultiObstacle() {
+    obstacleBot.drawObstacle();
+    obstacleTop.drawObstacle();
+    obstacleBot1.drawObstacle();
+    obstacleTop1.drawObstacle();
+    obstacleBot2.drawObstacle();
+    obstacleTop2.drawObstacle();
+}
+
 function plusPoint() {
-    if ((obstaclebot.x + obstaclebot.weight) < bird.x && (obstaclebot.x + obstaclebot.weight) > (bird.x - 1) ||
-        (obstaclebot1.x + obstaclebot1.weight) < bird.x && (obstaclebot1.x + obstaclebot1.weight) > (bird.x - 1) ||
-        (obstaclebot2.x + obstaclebot2.weight) < bird.x && (obstaclebot2.x + obstaclebot2.weight) > (bird.x - 1)
+    if ((obstacleBot.x + obstacleBot.weight) < bird.x && (obstacleBot.x + obstacleBot.weight) > (bird.x - 1) ||
+        (obstacleBot1.x + obstacleBot1.weight) < bird.x && (obstacleBot1.x + obstacleBot1.weight) > (bird.x - 1) ||
+        (obstacleBot2.x + obstacleBot2.weight) < bird.x && (obstacleBot2.x + obstacleBot2.weight) > (bird.x - 1)
     ) {
         score++;
         audioPoint.play();
@@ -79,13 +88,6 @@ function plusPoint() {
 }
 
 
-function drawMultiObstacle() {
-    obstaclebot.drawObstacle();
-    obstacletop.drawObstacle();
-    obstaclebot1.drawObstacle();
-    obstacletop1.drawObstacle();
-    obstaclebot2.drawObstacle();
-    obstacletop2.drawObstacle();
-}
+
 
 

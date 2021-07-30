@@ -52,37 +52,13 @@ let bird = new Bird(120, 100, 35, 27);
 let birdImg = new Image();
 birdImg.src = 'images/nobgr.png';
 
-function moveBird() {
-    clearCanvas()
-    if (checkGameOver() === true) {
-        location.reload();
-        audioCollision.play();
-        alert('Game over');
-        clearInterval(interval1Id);
-        clearInterval(interval2Id);
-    }
-    gamePlay();
-}
-
-function moveBirdUp() {
-    switch (event.keyCode) {
-        case 32: {
-            if (!this.checkBird) {
-                audioFly.play()
-                bird.moveUp();
-                break;
-            }
-        }
-    }
-}
-
 function checkCollisionTop() {
-    if ((((bird.x + bird.weight <= (obstacletop.x + obstacletop.weight)) && ((bird.x + bird.weight) >= (obstacletop.x))) &&
-            ((bird.y <= (obstacletop.y + obstacletop.height)))) ||
-        (((bird.x + bird.weight <= (obstacletop1.x + obstacletop1.weight)) && ((bird.x + bird.weight) >= (obstacletop1.x))) &&
-            ((bird.y <= (obstacletop1.y + obstacletop1.height)))) ||
-        (((bird.x + bird.weight <= (obstacletop2.x + obstacletop2.weight)) && ((bird.x + bird.weight) >= (obstacletop2.x))) &&
-            ((bird.y <= (obstacletop2.y + obstacletop2.height))))
+    if ((((bird.x + bird.weight <= (obstacleTop.x + obstacleTop.weight)) && ((bird.x + bird.weight) >= (obstacleTop.x))) &&
+            ((bird.y <= (obstacleTop.y + obstacleTop.height)))) ||
+        (((bird.x + bird.weight <= (obstacleTop1.x + obstacleTop1.weight)) && ((bird.x + bird.weight) >= (obstacleTop1.x))) &&
+            ((bird.y <= (obstacleTop1.y + obstacleTop1.height)))) ||
+        (((bird.x + bird.weight <= (obstacleTop2.x + obstacleTop2.weight)) && ((bird.x + bird.weight) >= (obstacleTop2.x))) &&
+            ((bird.y <= (obstacleTop2.y + obstacleTop2.height))))
     ) {
         return true;
     }
@@ -90,12 +66,12 @@ function checkCollisionTop() {
 }
 
 function checkCollisionBot() {
-    if ((((bird.x + bird.weight <= (obstaclebot.x + obstaclebot.weight)) && ((bird.x + bird.weight) >= (obstaclebot.x))) &&
-            ((bird.y + bird.height >= (obstaclebot.y)))) ||
-        (((bird.x + bird.weight <= (obstaclebot1.x + obstaclebot1.weight)) && ((bird.x + bird.weight) >= (obstaclebot1.x))) &&
-            ((bird.y + bird.height >= (obstaclebot1.y)))) ||
-        (((bird.x + bird.weight <= (obstaclebot2.x + obstaclebot2.weight)) && ((bird.x + bird.weight) >= (obstaclebot2.x))) &&
-            ((bird.y + bird.height >= (obstaclebot2.y))))) {
+    if ((((bird.x + bird.weight <= (obstacleBot.x + obstacleBot.weight)) && ((bird.x + bird.weight) >= (obstacleBot.x))) &&
+            ((bird.y + bird.height >= (obstacleBot.y)))) ||
+        (((bird.x + bird.weight <= (obstacleBot1.x + obstacleBot1.weight)) && ((bird.x + bird.weight) >= (obstacleBot1.x))) &&
+            ((bird.y + bird.height >= (obstacleBot1.y)))) ||
+        (((bird.x + bird.weight <= (obstacleBot2.x + obstacleBot2.weight)) && ((bird.x + bird.weight) >= (obstacleBot2.x))) &&
+            ((bird.y + bird.height >= (obstacleBot2.y))))) {
         return true;
     }
     return false
