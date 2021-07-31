@@ -60,32 +60,7 @@ let obstacleBot2 = new Obstacle(1000, obstacleTop2.height + space, 30, 400 - (ob
 let highScore = [0];
 let max = highScore[0];
 
-function drawMultiObstacle() {
-    obstacleBot.drawObstacle();
-    obstacleTop.drawObstacle();
-    obstacleBot1.drawObstacle();
-    obstacleTop1.drawObstacle();
-    obstacleBot2.drawObstacle();
-    obstacleTop2.drawObstacle();
-}
 
-function plusPoint() {
-    if ((obstacleBot.x + obstacleBot.weight) < bird.x && (obstacleBot.x + obstacleBot.weight) > (bird.x - 1) ||
-        (obstacleBot1.x + obstacleBot1.weight) < bird.x && (obstacleBot1.x + obstacleBot1.weight) > (bird.x - 1) ||
-        (obstacleBot2.x + obstacleBot2.weight) < bird.x && (obstacleBot2.x + obstacleBot2.weight) > (bird.x - 1)
-    ) {
-        score++;
-        audioPoint.play();
-        highScore.push(score);
-        document.getElementById('point').innerHTML = score;
-    }
-    for (let i = 0; i < highScore.length; i++) {
-        if (highScore[i] > max) {
-            max = highScore[i];
-        }
-    }
-    document.getElementById('highscore').innerHTML = "Điểm cao : " + max;
-}
 
 
 
